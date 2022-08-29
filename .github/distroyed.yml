@@ -4,8 +4,8 @@ env:
   directory: ./demo-module/example
 
 on:
-  push:
-    branches: ["main", "master"]
+  # push:
+  #   branches: ["main", "master"]
 
   workflow_dispatch:
 
@@ -31,14 +31,19 @@ jobs:
       run: terraform init
       working-directory: ${{env.directory}}
 
-    - name: Terraform Validate
-      id: validate
-      run: terraform validate
-      working-directory: ${{env.directory}}
+    # - name: Terraform Validate
+    #   id: validate
+    #   run: terraform validate
+    #   working-directory: ${{env.directory}}
 
       
-    - name: Terraform Plan
-      id: plan
-      run: terraform plan
+    # - name: Terraform Plan
+    #   id: plan
+    #   run: terraform plan
+    #   working-directory: ${{env.directory}}
+
+    - name: Terraform destroy
+      id: destroy
+      run: terraform destroy -auto-approve
       working-directory: ${{env.directory}}
 
